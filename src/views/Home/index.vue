@@ -11,10 +11,10 @@
         <div class="header-search"></div>
       </a>
     </header>
-     <Swiper ref = 'xxx'>
-      <SwiperItem>1</SwiperItem>
-      <SwiperItem>2</SwiperItem>
-      <SwiperItem>3</SwiperItem>
+     <Swiper class="my-swiper" v-if="bannerList.length>0" :autoplay="2000">
+      <SwiperItem v-for="item in bannerList" :key="item.id">
+        <img :src="item.imageurl" alt="">
+      </SwiperItem>
     </Swiper>
   </div>
 </template>
@@ -24,6 +24,11 @@ import { Swiper, SwiperItem } from '@/components/Swiper'
 import { getBanner } from '@/api/cartoon'
 export default {
   name: 'Home',
+  data () {
+    return {
+      bannerList: []
+    }
+  },
   components: {
     Swiper,
     SwiperItem
@@ -36,7 +41,14 @@ export default {
   created () {
     // 下载轮播图的数据
     getBanner().then(res => {
+      if (res.code === 200) {
+        this.bannerList = res.info
+      } else {
+        alert(res.code_msg)
+      }
       console.log(res)
+    }).catch((err) => {
+      alert('网络异常,请稍后' + err)
     })
   }
 }
@@ -44,6 +56,12 @@ export default {
 <style lang="scss" scoped>
 @import "~@/assets/styles/mixins.scss";
 .page-home {
+  .my-swiper{
+    img{
+      width: 100%;
+    }
+
+  }
   display: flex;
   flex-direction: column;
   height: 100%;

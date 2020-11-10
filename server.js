@@ -1,9 +1,9 @@
-const express = require("express");
-const { createProxyMiddleware } = require("http-proxy-middleware");
-const cors = require("cors");
-const app = express();
+const express = require('express')
+const { createProxyMiddleware } = require('http-proxy-middleware')
+const cors = require('cors')
+const app = express()
 
-//处理一下跨源
+// 处理一下跨源
 app.use(cors())
 
 // 目标地址 C 是: https://api.asilu.com/today/
@@ -11,7 +11,7 @@ app.use(cors())
 
 // A 发起请求 http://localhost:9090/migu/today/
 
-//提供代理，处理跨源的数据
+// 提供代理，处理跨源的数据
 app.use('/migu', createProxyMiddleware({
   // 目标地址，只写主机
   target: 'https://api.asilu.com',
@@ -22,13 +22,12 @@ app.use('/migu', createProxyMiddleware({
 }))
 
 app.get('/', (req, res) => {
-  res.send("hello world")
+  res.send('hello world')
 })
-
 
 app.listen(9090, () => {
-  console.log("服务器启动成功");
+  console.log('服务器启动成功')
 })
 
-//运行这个程序 npm run start  或者 npm start
-//supervisor server.js
+// 运行这个程序 npm run start  或者 npm start
+// supervisor server.js
