@@ -1,0 +1,37 @@
+{
+  "id": "1768242",
+  "name": "漫画岛",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "7766710",
+      "name": "icon_addmessage",
+      "font_class": "icon_addmessage",
+      "unicode": "eb8f",
+      "unicode_decimal": 60303
+    },
+    {
+      "icon_id": "7766711",
+      "name": "icon_addresslist",
+      "font_class": "icon_addresslist",
+      "unicode": "eb90",
+      "unicode_decimal": 60304
+    },
+    {
+      "icon_id": "7766716",
+      "name": "icon_addressbook",
+      "font_class": "icon_addressbook",
+      "unicode": "eb91",
+      "unicode_decimal": 60305
+    },
+    {
+      "icon_id": "7766717",
+      "name": "icon_at",
+      "font_class": "icon_at",
+      "unicode": "eb92",
+      "unicode_decimal": 60306
+    }
+  ]
+}
