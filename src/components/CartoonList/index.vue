@@ -1,6 +1,6 @@
 <template>
  <section class="classify-list">
-        <div class="list-item" v-for="item in list" :key="item.id">
+        <div class="list-item" v-for="(item,index) in list" :key="item.id">
           <div
             class="item-pic"
             :style="`background-image: url(${item.coverurl})`"
@@ -10,6 +10,7 @@
             <div class="info-author font-26">作者：{{item.author}}</div>
             <div class="info-fans font-26">人气：{{item.view | formatYi}}</div>
           </div>
+          <div :class="`item-ranking-${(index + 1) > 3 ? 'other':index+1}`" v-show="isRanking">{{(index + 1)| indexFilter}}</div>
         </div>
       </section>
 </template>
@@ -22,6 +23,19 @@ export default {
       type: Array,
       default () {
         return []
+      }
+    },
+    isRanking: {
+      type: Boolean,
+      default: false
+    }
+  },
+  filters: {
+    indexFilter (value) {
+      if (value > 3) {
+        return value
+      } else {
+        return ''
       }
     }
   }
@@ -64,9 +78,49 @@ export default {
       .info-book {
         color: #333;
       }
-      .info-book, .info-author {
+      .info-book,
+      .info-author {
         margin-bottom: 10px;
       }
+    }
+    .item-ranking-1,
+    .item-ranking-2,
+    .item-ranking-3 {
+      width: 50px;
+      height: 28px;
+      margin: auto;
+      position: absolute;
+      top: 0;
+      right: 20px;
+      bottom: 0;
+    }
+    .item-ranking-other {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 26px;
+      height: 25px;
+      color: #80808f;
+      background: url("~@/assets/icon/item-rank-other.png") no-repeat;
+      background-size: 100%;
+      margin: auto;
+      position: absolute;
+      top: 0;
+      right: 30px;
+      bottom: 0;
+      font-size: 15px;
+    }
+    .item-ranking-1 {
+      background: url("~@/assets/icon/item-rank-1.png") no-repeat;
+      background-size: 100%;
+    }
+    .item-ranking-2 {
+      background: url("~@/assets/icon/item-rank-2.png") no-repeat;
+      background-size: 100%;
+    }
+    .item-ranking-3 {
+      background: url("~@/assets/icon/item-rank-3.png") no-repeat;
+      background-size: 100%;
     }
   }
 }

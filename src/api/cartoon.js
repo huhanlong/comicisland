@@ -90,3 +90,25 @@ export const getRankList = (ranktype, pageno = 1, pagesize = 20) => {
     })
   })
 }
+
+/**
+ * 获取vip页面的数据
+ * https://mhd.zhuishushenqi.com/comic_v2/comicsfilterlist_v2?apptype=8&appversion=1.0&channel=web-app
+*/
+
+export const getVIPList = (special = 892, pageno = 1, pagesize = 15) => {
+  return request({
+    url: '/api/comic_v2/comicsfilterlist_v2',
+    method: 'POST',
+    params: {
+      apptype: 8,
+      appversion: 1.0,
+      channel: 'web-app'
+    },
+    data: format({
+      special,
+      pageno,
+      pagesize
+    })
+  })
+}
