@@ -2,7 +2,8 @@
    <div class="header-type">
         <div class="item"
         :class="{'active':index === activeIndex}"
-        v-for="(item,index) in types" :key="item.id"
+        v-for="(item,index) in types"
+        :key="item.id"
         @click="handleClick(item,index)"
         >{{ item.description }}</div>
       </div>
