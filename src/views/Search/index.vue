@@ -1,7 +1,7 @@
 <template>
   <div class="page-search">
     <header class="search-header">
-      <div class="header-back"></div>
+      <div class="header-back" @click="goBack"></div>
       <div class="header-search">
         <span class="icon-search"></span>
         <input
@@ -77,6 +77,9 @@ export default {
     }
   },
   methods: {
+    goBack () {
+      this.$router.back()
+    },
     getHotSearch () {
       getHotSearch().then(res => {
         if (res.code === 200) {
@@ -96,11 +99,12 @@ export default {
       const tmp = window.localStorage.getItem('search') ? JSON.parse(window.localStorage.getItem('search')) : []
 
       if (tmp.includes(keyword)) {
+        this.$router.push('/searchresult?name=' + keyword)
         return
       }
       tmp.push(keyword)
       window.localStorage.setItem('search', JSON.stringify(tmp))
-      this.$router.push('/search-result')
+      this.$router.push('/searchresult?name=' + keyword)
     },
     getSearch () {
       const tmp = window.localStorage.getItem('search')

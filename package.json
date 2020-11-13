@@ -24,6 +24,7 @@
     "autoprefixer": "^9.8.6",
     "axios": "^0.21.0",
     "babel-eslint": "^10.1.0",
+    "babel-plugin-import": "^1.13.1",
     "cors": "^2.8.5",
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.20.2",
@@ -37,6 +38,7 @@
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "swiper": "^6.3.5",
+    "vant": "^2.10.13",
     "vue-template-compiler": "^2.6.11"
   }
 }
