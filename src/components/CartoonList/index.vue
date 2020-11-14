@@ -3,7 +3,7 @@
         <div class="list-item" v-for="(item,index) in list" :key="item.id">
           <div
             class="item-pic"
-            :style="`background-image: url(${item.coverurl})`"
+            v-lazy:background-image="item.coverurl"
           ></div>
           <div class="item-info">
             <div class="info-book font-30">{{item.name}}</div>

@@ -13,6 +13,10 @@ import SearchResult from '../views/SearchResult'
 import Vip from '../views/Vip'
 import Favorite from '../views/Hello/Favorite'
 import History from '../views/Hello/History'
+import City from '../views/City'
+import nprogress from 'nprogress'
+import 'nprogress/nprogress.css'
+nprogress.configure({ showSpinner: false })
 
 Vue.use(VueRouter)
 
@@ -36,8 +40,18 @@ const router = new VueRouter({
     { path: '/search', component: Search },
     { path: '/searchresult', component: SearchResult },
     { path: '/vip', component: Vip },
+    { path: '/city', component: City },
     { path: '/', redirect: '/home' }
   ]
+})
+
+// 全局路由首位
+router.beforeEach((to, from, next) => {
+  nprogress.start()
+  next()
+})
+router.afterEach((to, from) => {
+  nprogress.done()
 })
 
 export default router

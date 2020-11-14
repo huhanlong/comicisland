@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import cityModule from './modules/cityModule'
 
 Vue.use(Vuex)
 
@@ -11,5 +12,6 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
+    city: cityModule
   }
 })

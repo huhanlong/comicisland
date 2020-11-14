@@ -1,10 +1,11 @@
 <template>
   <div class="page-home">
+        <router-link to = '/city'>当前选中城市为：{{ $store.getters['city/curCityName'] }}</router-link>
     <index-header></index-header>
     <div class="index-main">
       <Swiper class="my-swiper" v-if="bannerList.length > 0" :autoplay="3000">
         <SwiperItem v-for="item in bannerList" :key="item.id">
-          <img :src="item.imageurl" alt />
+          <img v-lazy="item.imageurl" alt />
         </SwiperItem>
       </Swiper>
       <index-nav></index-nav>
@@ -18,7 +19,7 @@
         >
           <img
             class="img"
-            src="https://wechatapp.zhuishushenqi.com/mhd/201711/gongan.jpg"
+            v-lazy="`https://wechatapp.zhuishushenqi.com/mhd/201711/gongan.jpg`"
           />
           <div>沪公网安备 31011202006214号</div>
         </a>
@@ -78,9 +79,6 @@ export default {
             // 在这里我们先通过 alert 进行报错，后期 我们可以用一下 vant 组件库的组件
             alert(res.code_msg)
           }
-        })
-        .catch(err => {
-          alert('网络异常，请稍后：' + err)
         })
     },
     getIndexRecomment () {

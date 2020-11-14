@@ -7,7 +7,7 @@
         <div class="list-item" v-for="item in cartoonList" :key="item.id">
           <div
             class="item-pic"
-            :style="`background-image: url(${item.coverurl});`"
+            v-lazy:background-image="item.coverurl"
           ></div>
           <div class="item-info">
             <div class="info-book font-30">{{item.name}}</div>
@@ -45,9 +45,6 @@ export default {
         } else {
           console.log(res.code.msg)
         }
-      }).catch(err => {
-        console.log(err)
-        alert('网络异常，请稍后重试')
       })
     }
   },

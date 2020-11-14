@@ -1,6 +1,6 @@
 // 引入axios
 import axios from 'axios'
-
+import { Notify } from 'vant'
 // 创建实例
 const instance = axios.create({
   // options    方便你后期上线的时候，更改主机名
@@ -23,6 +23,10 @@ instance.interceptors.response.use(function (response) {
   // 对响应数据做点什么
   return response.data
 }, function (error) {
+  Notify({
+    message: '网络异常，请稍后重试',
+    duration: 500
+  })
   // 对响应错误做点什么
   return Promise.reject(error)
 })
